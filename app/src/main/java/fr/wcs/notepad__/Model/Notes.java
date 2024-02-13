@@ -12,11 +12,7 @@ import java.time.LocalDate;
                 parentColumns = "catalogueId",
                 childColumns = "catalogueId",
                 onDelete = ForeignKey.CASCADE
-        ),
-        @ForeignKey(entity = Trash.class,
-                parentColumns = "trashId",
-                childColumns = "trashId",
-                onDelete = ForeignKey.CASCADE)
+        )
 })
 @TypeConverters(DateConverter.class)
 public class Notes {
@@ -33,11 +29,14 @@ public class Notes {
 
     private LocalDate lastModif;
 
+    private boolean isDeleted;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Notes() {
         this.title = "";
         this.containerText = "";
         this.lastModif = LocalDate.now();
+        isDeleted = false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -45,6 +44,7 @@ public class Notes {
         this.title = title;
         this.containerText = containerText;
         this.lastModif = LocalDate.now();
+        isDeleted = false;
     }
 
     public Long getIdNotes() {
@@ -96,4 +96,11 @@ public class Notes {
         this.trashId = trashId;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 }
