@@ -25,16 +25,22 @@ public class Notes implements Serializable, Comparable<Notes> {
     @PrimaryKey(autoGenerate = true)
     private Long idNotes;
 
+    @ColumnInfo(name = "title")
     private String title;
 
+    @ColumnInfo(name = "containerText")
     private String containerText;
 
+    @ColumnInfo(name = "catalogueId")
     private long catalogueId;
 
+    @ColumnInfo(name = "favorite")
     private boolean favorite;
 
+    @ColumnInfo(name = "lastModif")
     private LocalDate lastModif;
 
+    @ColumnInfo(name = "isDeleted")
     private boolean isDeleted;
 
     @RequiresApi(api = Build.VERSION_CODES.O)

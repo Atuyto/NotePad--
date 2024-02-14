@@ -1,9 +1,6 @@
 package fr.wcs.notepad__.Model.BDD;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
+import androidx.room.*;
 import fr.wcs.notepad__.Model.Notes;
 
 import java.util.List;
@@ -22,6 +19,9 @@ public interface NotesDao {
 
     @Insert
     long insertNote(Notes note);
+
+    @Update
+    void updateNotes(Notes notes);
 
 
 
