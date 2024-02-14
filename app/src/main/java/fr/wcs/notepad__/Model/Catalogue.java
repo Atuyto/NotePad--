@@ -3,6 +3,8 @@ package fr.wcs.notepad__.Model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.*;
+
 @Entity(tableName = "catalogue")
 public class Catalogue {
     @PrimaryKey(autoGenerate = true)
@@ -19,5 +21,6 @@ public class Catalogue {
         this.catalogueId = catalogueId;
         return this;
     }
+
 
 }
