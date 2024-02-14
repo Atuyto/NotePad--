@@ -18,7 +18,7 @@ public class NotesControler implements View.OnClickListener{
     private final AppDatabase appDatabase;
     private int note_id, catalogue_id;
 
-    private ExecutorService executor;
+    private ExecutorService executor; // Permet d'excuter des thread en arrière plan
     private AppCompatActivity context;
 
     private Notes notes;
@@ -52,7 +52,7 @@ public class NotesControler implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.id_note_activity_back){
-            this.context.finish();
+            this.context.finish(); // ici je reviens à l'activité précédente
         }
     }
 }

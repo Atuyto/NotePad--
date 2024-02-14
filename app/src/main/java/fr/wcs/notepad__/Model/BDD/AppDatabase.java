@@ -20,6 +20,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract  CatalogueDao catalogueDao();
 
+    /**
+     * <h1>Cette méthode permet de créer le singleton (l'instance de la base de donnée)</h1>
+     * @param context c'est le context de l'application
+     * @return une instance de AppDatabase
+     */
     public static synchronized AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(

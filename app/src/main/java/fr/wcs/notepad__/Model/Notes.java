@@ -11,6 +11,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * <h1>Notes</h1>
+ * Notes est une classe qui permet de stocker un titre et le texte d'une note. C'est également
+ * une table dans une base de donné locale ce qui permet de de stocker plusieur note en local
+ * <strong>catalogueId</strong> est une référence à un catalogue dans la base de donnée
+ *  <br/>
+ *
+ */
+
 @Entity(foreignKeys = {
         @ForeignKey(
                 entity = Catalogue.class,

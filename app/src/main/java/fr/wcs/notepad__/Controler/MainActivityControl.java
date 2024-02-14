@@ -18,6 +18,7 @@ public class MainActivityControl implements View.OnClickListener{
             Intent intent = new Intent(v.getContext(),NotesView.class);
             v.getContext().startActivity(intent);
 
+            // ajouter les différent putExtra (faire l'affichage de toute les notes avant)
 
         }
     }
