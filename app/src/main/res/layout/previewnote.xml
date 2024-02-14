@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,22 +24,22 @@
         android:id="@+id/id_previewnote_edittitre"
         ></EditText>
 
-        <Button
+        <item android:id="@+id/id_previewnote_menu"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="img"
-            ></Button>
+            android:layout_height="50dp"
+            android:title="test"
+            ></item>
+
     </LinearLayout>
 
 
     <TextView
+        android:id="@+id/id_previewnote_affichagenote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note :"
-        android:textSize="35dp"
         android:layout_marginTop="50dp"
-        android:id="@+id/id_previewnote_affichagenote"
-        ></TextView>
+        android:text="Note :"
+        android:textSize="35dp"></TextView>
 
     <EditText
         android:layout_width="400dp"
