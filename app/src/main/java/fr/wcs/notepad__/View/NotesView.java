@@ -42,8 +42,8 @@ public class NotesView extends AppCompatActivity   {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void init(){
-        this.note_id        = this.getIntent().getIntExtra("note_id", -1);
-        this.catalogue_id   = this.getIntent().getIntExtra("catalogue_id", 1);
+        this.note_id        = this.getIntent().getIntExtra("note_id", -1); // récupére l'id de la note séléctionner si pas alors c'est -1 c'est a dire qu'il faut en créer une
+        this.catalogue_id   = this.getIntent().getIntExtra("catalogue_id", 1); // récupérer le putExtra de l'id catalogue (le fichier par défauts le fichier principale)
         this.notes_text     = findViewById(R.id.id_note_activity_note);
         this.title          = findViewById(R.id.id_note_activity_title);
         this.buttun_back    = findViewById(R.id.id_note_activity_back);

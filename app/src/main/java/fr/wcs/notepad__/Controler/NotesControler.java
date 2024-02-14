@@ -42,6 +42,12 @@ public class NotesControler implements View.OnClickListener{
         }
 
     }
+
+    /**
+     * <h2>Cette méthode est importante pour le démarrage</h2>
+     * Elle permet de gérer si dans la base de donné il existe un catalogue ou pas.
+     * Si il y en a pas alors il vas en créer un.
+     */
     private void initializaCatalogue(){
         if (this.appDatabase.catalogueDao().getAllCatalogue().isEmpty()) {
             this.notes.setCatalogueId(this.appDatabase.catalogueDao().insertCatalogue(new Catalogue()));
