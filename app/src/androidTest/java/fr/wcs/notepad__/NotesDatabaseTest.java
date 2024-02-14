@@ -53,7 +53,6 @@ public class NotesDatabaseTest {
         Notes note = new Notes("Test Title", "Test Container Text");
         note.setCatalogueId(catalogueId);
         long noteId = notesDao.insertNote(note);
-        System.out.println(noteId);
 
         // Récupération de la note à partir de la base de données
         Notes retrievedNote = notesDao.getNoteById(noteId);
