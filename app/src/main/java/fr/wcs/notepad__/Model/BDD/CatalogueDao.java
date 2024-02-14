@@ -1,6 +1,7 @@
 package fr.wcs.notepad__.Model.BDD;
 
 import androidx.room.Dao;
+import androidx.room.Insert;
 import androidx.room.Query;
 import fr.wcs.notepad__.Model.Catalogue;
 
@@ -14,4 +15,7 @@ public interface CatalogueDao {
 
     @Query("select * from catalogue where catalogueId = :id")
     public Catalogue getCatalogueFromId(long id);
+
+    @Insert
+    long insertCatalogue(Catalogue catalogue);
 }

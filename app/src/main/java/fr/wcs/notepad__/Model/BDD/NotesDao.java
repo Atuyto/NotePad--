@@ -14,13 +14,17 @@ public interface NotesDao {
     @Query("select * from notes")
     List<Notes> getAllNotes();
 
-    @Query("select * from notes where notes.idNotes = :id")
-    List<Notes> getAllNotes(long id);
+    @Query("select * from notes where notes.idNotes = :noteId")
+    Notes getNoteById(long noteId);
 
     @Delete
     void deleteNotes(Notes notes);
 
     @Insert
-    void insertNotes(Notes notes);
+    long insertNote(Notes note);
+
+
+
+
 
 }

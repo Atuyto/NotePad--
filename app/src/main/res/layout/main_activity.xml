@@ -22,7 +22,7 @@
                 android:text="NotePad--"
                 android:textColor="@color/white"
                 android:textSize="42dp"
-                android:fontFamily="@font/poppinsboldItalic"
+                android:fontFamily="@font/poppinsbolditalic"
         />
         <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 android:text="4 notes"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:fontFamily="@font/poppinsboldItalic"
+                android:fontFamily="@font/poppinsbolditalic"
         />
 
     </LinearLayout>

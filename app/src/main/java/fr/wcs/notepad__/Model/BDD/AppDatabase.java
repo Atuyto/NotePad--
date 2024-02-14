@@ -8,7 +8,7 @@ import fr.wcs.notepad__.Model.Catalogue;
 import fr.wcs.notepad__.Model.DateConverter;
 import fr.wcs.notepad__.Model.Notes;
 
-@Database(entities = {Notes.class, Catalogue.class}, version = 1)
+@Database(entities = {Notes.class, Catalogue.class}, version = 1, exportSchema = true)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract NotesDao notesDao();

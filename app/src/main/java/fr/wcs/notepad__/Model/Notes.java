@@ -24,7 +24,6 @@ public class Notes {
 
     private String containerText;
 
-    private long trashId;
     private long catalogueId;
 
     private LocalDate lastModif;
@@ -88,13 +87,6 @@ public class Notes {
         this.catalogueId = catalogueId;
     }
 
-    public long getTrashId() {
-        return trashId;
-    }
-
-    public void setTrashId(long trashId) {
-        this.trashId = trashId;
-    }
 
     public boolean isDeleted() {
         return isDeleted;
