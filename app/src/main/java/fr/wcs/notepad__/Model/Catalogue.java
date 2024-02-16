@@ -1,23 +1,36 @@
 package fr.wcs.notepad__.Model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.*;
 
 @Entity(tableName = "catalogue")
 public class Catalogue {
     @PrimaryKey(autoGenerate = true)
-    public long catalogueId;
+    private long catalogueId;
+
+    @ColumnInfo(name = "name")
+    private String name;
 
     public Catalogue() {
+        this.name = "Dossier";
     }
 
     public long getCatalogueId() {
         return catalogueId;
     }
 
-    public Catalogue setCatalogueId(long catalogueId) {
+    public void setCatalogueId(long catalogueId) {
         this.catalogueId = catalogueId;
-        return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

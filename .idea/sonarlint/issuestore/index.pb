@@ -79,3 +79,9 @@ Q.idea/sonarlint/securityhotspotstore/e/1/e1016420fdd9812bacae22d61fb57e3d766236
 Q.idea/sonarlint/securityhotspotstore/0/9/0905267240b7a10399deffd8b47e3567e3ebc612,f\5\f5e8320db2dc16ceb32987fcbf2231b4c8752846
 
 Q.idea/sonarlint/securityhotspotstore/9/d/9d04c584248c1c72154817c65617b9072479afe9,a\e\aed43a8fc43db91c1fe6b5d9a64ac77dc91c6576
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+n
+>app/src/main/java/fr/wcs/notepad__/Controler/MainActivity.java,1\c\1c8b5728d9048d79e6dbae607592a5730579743c
+m
+=app/src/main/java/fr/wcs/notepad__/View/MainActivityView.java,d\9\d9110a9efcaf511efde83e063ac5b71ad225f904
