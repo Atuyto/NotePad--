@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.wcs.notepad__.Controler.NotesControler;
+import fr.wcs.notepad__.Controler.TitleField;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.R;
@@ -32,6 +33,7 @@ public class NotesView extends AppCompatActivity   {
     private int catalogue_id;
 
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,8 @@ public class NotesView extends AppCompatActivity   {
         this.notes_text     = findViewById(R.id.id_note_activity_note);
         this.title          = findViewById(R.id.id_note_activity_title);
         this.buttun_back    = findViewById(R.id.id_note_activity_back);
-        this.notesControler = new NotesControler(this.note_id, this.catalogue_id, this);
+        this.notesControler = new NotesControler(this.note_id, this.catalogue_id, this, this.title, this.notes_text);
 
-
-        //this.title.addTextChangedListener(this);
         this.buttun_back.setOnClickListener(this.notesControler);
     }
 

@@ -1,18 +1,25 @@
 package fr.wcs.notepad__.View;
 
-import android.os.Bundle;
-import android.view.View;
+import android.provider.ContactsContract;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import fr.wcs.notepad__.Controler.CardNoteAddapter;
 import fr.wcs.notepad__.Controler.MainActivity;
 import fr.wcs.notepad__.Controler.MainActivityControl;
+import fr.wcs.notepad__.Model.BDD.AppDatabase;
+import fr.wcs.notepad__.Model.Notes;
+import fr.wcs.notepad__.Model.Observer;
 import fr.wcs.notepad__.R;
 
-public class MainActivityView{
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class MainActivityView implements Observer {
 
     private EditText search_bar;
 
@@ -24,10 +31,20 @@ public class MainActivityView{
 
     private MainActivity mainActivity;
 
+    private AppDatabase appDatabase;
+    private RecyclerView recyclerView;
+    private CardNoteAddapter cardNoteAddapter;
+    private MainActivityControl mainActivityControl;
+    private ExecutorService executorService;
+    private List<Notes> notes;
     public  MainActivityView(MainActivity mainActivity){
+        this.executorService     = Executors.newSingleThreadExecutor();
+        this.appDatabase         = AppDatabase.getInstance(mainActivity);
         this.mainActivity        = mainActivity;
+        this.mainActivityControl = new MainActivityControl(this.cardNoteAddapter, this.mainActivity);
         this.mainActivity.setContentView(R.layout.main_activity);
         this.number_pages        = this.mainActivity.findViewById(R.id.id_main_activity_notes);
+        this.recyclerView        = this.mainActivity.findViewById(R.id.id_main_activity_recyclerView);
         this.search_bar          = this.mainActivity.findViewById(R.id.id_main_activity_search_bar);
         this.button_sort_by_date = this.mainActivity.findViewById(R.id.id_main_activity_date);
         this.burger_menu_button  = this.mainActivity.findViewById(R.id.id_main_activity_burger_button);
@@ -37,7 +54,26 @@ public class MainActivityView{
     }
 
     private void init(){
-        this.button_add_note.setOnClickListener(new MainActivityControl());
+        this.button_add_note.setOnClickListener(this.mainActivityControl);
+        this.button_sort_by_date.setOnClickListener(this.mainActivityControl);
+
+        this.loadNotes();
+    }
+
+    @Override
+    public void loadNotes() {
+        this.executorService.execute(() -> {
+            List<Notes> n = appDatabase.notesDao().getAllNotes();
+            // Mettez à jour l'interface utilisateur avec les notes
+            updateUIWithNotes(n);
+        });
+    }
+
+    private void updateUIWithNotes(List<Notes> notes) {
+        cardNoteAddapter = new CardNoteAddapter(mainActivity, notes);
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setAdapter(cardNoteAddapter);
+        number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
     }
 
 

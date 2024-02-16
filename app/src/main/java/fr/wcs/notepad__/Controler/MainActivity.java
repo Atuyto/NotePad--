@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.room.Room;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
+import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.R;
 import fr.wcs.notepad__.View.MainActivityView;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        new MainActivityView(this);
+        Observable.setObservers(new MainActivityView(this));
 
     }
 }

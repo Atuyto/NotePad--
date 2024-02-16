@@ -3,17 +3,19 @@ package fr.wcs.notepad__.Controler;
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Catalogue;
 import fr.wcs.notepad__.Model.Notes;
+import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.R;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class NotesControler implements View.OnClickListener{
+public class NotesControler extends Observable implements View.OnClickListener {
 
     private final AppDatabase appDatabase;
     private int note_id, catalogue_id;
@@ -24,7 +26,7 @@ public class NotesControler implements View.OnClickListener{
     private Notes notes;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public NotesControler(int note_id, int catalogue_id, AppCompatActivity context){
+    public NotesControler(int note_id, int catalogue_id, AppCompatActivity context, TextView title, TextView text){
         this.appDatabase    = AppDatabase.getInstance(context);
         this.executor       = Executors.newSingleThreadExecutor();
         this.context        = context;
@@ -35,11 +37,15 @@ public class NotesControler implements View.OnClickListener{
             this.notes = new Notes();
             this.executor.execute(this::initializaCatalogue);
             this.notes.setCatalogueId(1);
-            this.executor.execute(() -> this.appDatabase.notesDao().insertNote(this.notes));
+            this.executor.execute(() -> this.notes.setIdNotes(this.appDatabase.notesDao().insertNote(this.notes)));
         }
         else {
             this.executor.execute(() -> this.notes = this.appDatabase.notesDao().getNoteById(this.note_id));
         }
+
+        title.addTextChangedListener(new TitleField(this.context, this.notes, this.appDatabase));
+        text.addTextChangedListener(new TitleField(this.context, this.notes, this.appDatabase));
+
 
     }
 
@@ -59,6 +65,11 @@ public class NotesControler implements View.OnClickListener{
     public void onClick(View v) {
         if(v.getId() == R.id.id_note_activity_back){
             this.context.finish(); // ici je reviens à l'activité précédente
+
+            // Utilisez runOnUiThread pour exécuter loadNotes sur le thread principal
+            this.loadNotes();
+
+
         }
     }
 }

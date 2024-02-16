@@ -14,6 +14,10 @@ public interface NotesDao {
     @Query("select * from notes where notes.idNotes = :noteId")
     Notes getNoteById(long noteId);
 
+    @Query("select count(*) from notes")
+    int getNbNote();
+
+
     @Delete
     void deleteNotes(Notes notes);
 
