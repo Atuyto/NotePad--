@@ -33,10 +33,13 @@ public class TitleField implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        this.executorService.execute(() ->{
-            this.notes.setTitle(s.toString());
-            this.appDatabase.notesDao().updateNotes(this.notes);
-        });
+        System.out.println(notes);
+        if(notes!= null) {
+            this.executorService.execute(() -> {
+                this.notes.setTitle(s.toString());
+                this.appDatabase.notesDao().updateNotes(this.notes);
+            });
+        }
 
 
     }

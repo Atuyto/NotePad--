@@ -56,25 +56,33 @@ public class MainActivityView implements Observer {
     private void init(){
         this.button_add_note.setOnClickListener(this.mainActivityControl);
         this.button_sort_by_date.setOnClickListener(this.mainActivityControl);
+        this.executorService.execute(()->{
+            this.notes =  appDatabase.notesDao().getAllNotes();
+            number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
+            loadNotes(this.notes);
+        });
 
-        this.loadNotes();
     }
 
     @Override
-    public void loadNotes() {
-        this.executorService.execute(() -> {
-            List<Notes> n = appDatabase.notesDao().getAllNotes();
-            // Mettez à jour l'interface utilisateur avec les notes
-            updateUIWithNotes(n);
-        });
+    public void loadNbNotes(int nb) {
+        number_pages.setText(String.valueOf(nb));
     }
 
-    private void updateUIWithNotes(List<Notes> notes) {
+    @Override
+    public List<Notes> getNotes() {
+        return this.notes;
+    }
+
+    @Override
+    public void loadNotes(List<Notes> notes) {
         cardNoteAddapter = new CardNoteAddapter(mainActivity, notes);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(cardNoteAddapter);
-        number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
     }
+
+
+
 
 
 

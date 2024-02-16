@@ -32,10 +32,13 @@ public class TextField implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        this.executorService.execute(() ->{
-            this.notes.setContainerText(s.toString());
-            this.appDatabase.notesDao().updateNotes(this.notes);
-        });
+        if (notes!=null){
+            this.executorService.execute(() ->{
+                this.notes.setContainerText(s.toString());
+                this.appDatabase.notesDao().updateNotes(this.notes);
+            });
+        }
+
 
 
     }
