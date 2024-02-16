@@ -79,6 +79,7 @@ public class MainActivityView implements Observer {
         cardNoteAddapter = new CardNoteAddapter(mainActivity, notes);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(cardNoteAddapter);
+        this.notes = notes;
     }
 
 
