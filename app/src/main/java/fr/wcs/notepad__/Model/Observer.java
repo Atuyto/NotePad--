@@ -9,4 +9,5 @@ public interface Observer{
     public void loadNbNotes(int nb);
 
     List<Notes> getNotes();
+
 }

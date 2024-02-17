@@ -21,6 +21,7 @@ import fr.wcs.notepad__.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.CardViewHolder>  {
 
@@ -36,7 +37,7 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_note, parent, false);
-        return new CardViewHolder(view, this.context);
+        return new CardViewHolder(view, this);
     }
 
     @Override
@@ -44,6 +45,25 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         Notes note = notes.get(position);
         holder.bind(note);
 
+    }
+
+    private int getPositionNote(Notes notes){
+        int cpt =0;
+        for(Notes n : this.notes){
+            if(n.equals(notes)){
+                return cpt;
+            }
+            else {
+                cpt++;
+            }
+        }
+        return -1;
+    }
+
+    public void setFavorit(Notes n){
+        n.setFavorite(!n.isFavorite());
+        Executors.newSingleThreadExecutor().execute(()-> AppDatabase.getInstance(this.context).notesDao().updateNotes(n));
+        this.notifyItemChanged(this.getPositionNote(n));
     }
 
     @Override
@@ -56,10 +76,10 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         private TextView title, date, preview;
         private CardView cardView;
         private ImageView ic_stars;
-        private AppCompatActivity compatActivity;
-        public CardViewHolder(View itemView, AppCompatActivity compatActivity) {
+        private CardNoteAddapter cardNoteAddapter;
+        public CardViewHolder(View itemView, CardNoteAddapter cardNoteAddapter) {
             super(itemView);
-            this.compatActivity = compatActivity;
+            this.cardNoteAddapter = cardNoteAddapter;
             this.cardView = itemView.findViewById(R.id.id_card_note_view);
             this.preview = itemView.findViewById(R.id.id_card_note_preview);
             this.title   = itemView.findViewById(R.id.id_card_note_title);
@@ -72,7 +92,7 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
             this.title.setText(notes.getTitle());
             this.date.setText(DateConverter.fromLocalDate(notes.getLastModif()));
             this.preview.setText(notes.getContainerText());
-            CardNotesControler cardNotesControler = new CardNotesControler(notes, compatActivity);
+            CardNotesControler cardNotesControler = new CardNotesControler(notes,this.cardNoteAddapter );
             this.cardView.setOnClickListener(cardNotesControler);
             this.ic_stars.setOnClickListener(cardNotesControler);
             if(notes.isFavorite()){

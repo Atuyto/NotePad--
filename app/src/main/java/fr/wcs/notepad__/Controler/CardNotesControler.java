@@ -16,11 +16,11 @@ import java.util.concurrent.Executors;
 public class CardNotesControler extends Observable implements View.OnClickListener {
 
     private Notes notes;
-    private AppCompatActivity compatActivity;
+    private CardNoteAddapter cardNoteAddapter;
 
-    public CardNotesControler(Notes notes, AppCompatActivity activity) {
+    public CardNotesControler(Notes notes, CardNoteAddapter cardNoteAddapter) {
         this.notes = notes;
-        this.compatActivity = activity;
+        this.cardNoteAddapter = cardNoteAddapter;
     }
 
     @Override
@@ -31,8 +31,7 @@ public class CardNotesControler extends Observable implements View.OnClickListen
             view.getContext().startActivity(intent);
         }
         if(view.getId() == R.id.id_card_note_sart){
-            this.notes.setFavorite(!this.notes.isFavorite());
-            compatActivity.runOnUiThread(() -> this.loadNotes(this.getNotes()));
+            this.cardNoteAddapter.setFavorit(notes);
         }
 
     }
