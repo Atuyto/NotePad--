@@ -26,12 +26,12 @@ public class MainActivityControl implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.id_main_activity_add_notes){
+            System.out.println("test");
             Intent intent = new Intent(v.getContext(),NotesView.class);
             v.getContext().startActivity(intent);
 
             // ajouter les différent putExtra (faire l'affichage de toute les notes avant
         }
         //this.executor.execute(()->System.out.println(AppDatabase.getInstance(v.getContext()).notesDao().getNoteById(1).getTitle()));
-
     }
 }
