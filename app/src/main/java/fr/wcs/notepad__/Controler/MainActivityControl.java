@@ -1,5 +1,6 @@
 package fr.wcs.notepad__.Controler;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.view.View;
@@ -16,7 +17,7 @@ public class MainActivityControl implements View.OnClickListener{
     private ExecutorService executor; // Permet d'excuter des thread en arrière plan
 
     private CardNoteAddapter cardNoteAddapter;
-    public MainActivityControl(CardNoteAddapter cardNoteAddapter, MainActivity mainActivity){
+    public MainActivityControl(CardNoteAddapter cardNoteAddapter, Context context){
         this.cardNoteAddapter = cardNoteAddapter;
         this.executor         = Executors.newSingleThreadExecutor();
     }

@@ -26,11 +26,11 @@ import java.util.concurrent.Executors;
 public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.CardViewHolder>  {
 
     private List<Notes> notes;
-    private AppCompatActivity context;
+    private Context context;
 
 
 
-    public CardNoteAddapter(AppCompatActivity context, List<Notes> notes){
+    public CardNoteAddapter(Context context, List<Notes> notes){
         this.notes = notes;
         this.context = context;
     }

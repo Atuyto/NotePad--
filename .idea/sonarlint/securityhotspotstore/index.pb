@@ -103,3 +103,11 @@ h
 8app/src/main/java/fr/wcs/notepad__/Model/Observable.java,2\c\2c5130067b3b3297c7fffa3dcaad795b959665d8
 f
 6app/src/main/java/fr/wcs/notepad__/Model/Observer.java,b\9\b9ece2ce62fe19944869a7ee793598cc9cc60682
+r
+Bapp/src/main/java/fr/wcs/notepad__/View/Fragment/MainFragment.java,7\0\707592420339995ed4e95ce73c73f2b1d352e04f
+d
+4app/src/main/java/fr/wcs/notepad__/MainFragment.java,b\e\be7330a517f05577669dc4a72fa8e031039087be
+t
+Dapp/src/main/java/fr/wcs/notepad__/Model/Fragment/MiainFragment.java,a\f\af4124e7fa89c0c497a3e059e4731dd9cece4d85
+s
+Capp/src/main/java/fr/wcs/notepad__/Model/Fragment/MainFragment.java,3\0\3098ef6a1c4b483c95a9a71706ce076522f709f5
