@@ -1,27 +1,18 @@
-package fr.wcs.notepad__.Controler;
+package fr.wcs.notepad__.Model.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Window;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.room.Room;
-import fr.wcs.notepad__.Model.BDD.AppDatabase;
-import fr.wcs.notepad__.Model.Fragment.MainFragment;
+import androidx.fragment.app.Fragment;
 import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.R;
 import fr.wcs.notepad__.View.MainActivityView;
 
-public class MainActivity extends AppCompatActivity {
-
-    private AppDatabase appDatabase;
+public class MainFragment extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.fragment_main);
 
         if (savedInstanceState == null) {
@@ -31,9 +22,5 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             Observable.setObservers(mainActivityView);
         }
-
-
-
     }
-
 }

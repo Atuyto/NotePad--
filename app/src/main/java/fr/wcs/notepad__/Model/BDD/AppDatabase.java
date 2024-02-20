@@ -11,6 +11,8 @@ import fr.wcs.notepad__.Model.Catalogue;
 import fr.wcs.notepad__.Model.DateConverter;
 import fr.wcs.notepad__.Model.Notes;
 
+import java.util.concurrent.Executors;
+
 @Database(entities = {Notes.class, Catalogue.class}, version = 2, exportSchema = true)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -31,7 +33,10 @@ public abstract class AppDatabase extends RoomDatabase {
                     context.getApplicationContext(),
                     AppDatabase.class,
                     "notes_database"
-            ).fallbackToDestructiveMigration().build();
+            )
+                    .fallbackToDestructiveMigration()
+                    .setQueryExecutor(Executors.newSingleThreadExecutor())
+                    .build();
         }
         return INSTANCE;
     }
