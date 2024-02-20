@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NotePad--</string>
+    <string name="open">ouvert</string>
+    <string name="close">fermer\n</string>
 </resources>

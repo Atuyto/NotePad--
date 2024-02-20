@@ -21,5 +21,7 @@ public class MainActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         new MainActivityView(this);
 
+
     }
+
 }

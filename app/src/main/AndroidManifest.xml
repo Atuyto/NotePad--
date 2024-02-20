@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="fr.wcs.notepad__.View.NotesView"/>
+        <activity android:name="fr.wcs.notepad__.View.MainActivityView"/>
     </application>
 
 </manifest>
