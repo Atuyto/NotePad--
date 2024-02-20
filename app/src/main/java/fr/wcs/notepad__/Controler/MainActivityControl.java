@@ -16,9 +16,7 @@ import java.util.concurrent.Executors;
 public class MainActivityControl implements View.OnClickListener{
     private ExecutorService executor; // Permet d'excuter des thread en arrière plan
 
-    private CardNoteAddapter cardNoteAddapter;
-    public MainActivityControl(CardNoteAddapter cardNoteAddapter, Context context){
-        this.cardNoteAddapter = cardNoteAddapter;
+    public MainActivityControl(Context context){
         this.executor         = Executors.newSingleThreadExecutor();
     }
 

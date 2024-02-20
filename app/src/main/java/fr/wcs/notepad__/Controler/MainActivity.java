@@ -1,14 +1,10 @@
 package fr.wcs.notepad__.Controler;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.room.Room;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
-import fr.wcs.notepad__.Model.Fragment.MainFragment;
 import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.R;
 import fr.wcs.notepad__.View.MainActivityView;
@@ -27,8 +23,11 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             MainActivityView mainActivityView = new MainActivityView();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, mainActivityView)
+                    .replace(R.id.fragment_container, mainActivityView, "MainActivityViewTag")
                     .commit();
+            Observable.setObservers(mainActivityView);
+        } else {
+            MainActivityView mainActivityView = (MainActivityView) getSupportFragmentManager().findFragmentByTag("MainActivityViewTag");
             Observable.setObservers(mainActivityView);
         }
 

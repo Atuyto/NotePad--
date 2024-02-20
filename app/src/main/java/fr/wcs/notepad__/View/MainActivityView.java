@@ -60,18 +60,15 @@ public class MainActivityView extends Fragment implements Observer {
         this.favorite_button = rootView.findViewById(R.id.id_main_activity_favorite_button);
         this.button_add_note = rootView.findViewById(R.id.id_main_activity_add_notes);
 
+        this.executorService = Executors.newSingleThreadExecutor();
+        this.appDatabase = AppDatabase.getInstance(this.getContext());
+        this.mainActivityControl = new MainActivityControl(this.getContext());
+
         this.init(); // Appeler la méthode d'initialisation
 
         return rootView;
     }
 
-    @Override
-    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.executorService = Executors.newSingleThreadExecutor();
-        this.appDatabase = AppDatabase.getInstance(this.getContext());
-        this.mainActivityControl = new MainActivityControl(this.cardNoteAddapter, this.getContext());
-    }
 
     private void init(){
         this.button_add_note.setOnClickListener(this.mainActivityControl);
@@ -80,7 +77,6 @@ public class MainActivityView extends Fragment implements Observer {
             this.notes =  appDatabase.notesDao().getAllNotes();
             number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
             loadNotes(this.notes);
-            System.out.println(this.notes);
         });
 
     }
@@ -97,10 +93,16 @@ public class MainActivityView extends Fragment implements Observer {
 
     @Override
     public void loadNotes(List<Notes> notes) {
-        cardNoteAddapter = new CardNoteAddapter(this.getContext(), notes);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyclerView.setAdapter(cardNoteAddapter);
         this.notes = notes;
+        if (this.cardNoteAddapter == null) {
+            this.cardNoteAddapter = new CardNoteAddapter(getContext(), notes);
+            this.recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+            this.recyclerView.setHasFixedSize(false);
+            this.recyclerView.setAdapter(this.cardNoteAddapter);
+        } else {
+            this.cardNoteAddapter.setNotesList(notes);
+        }
+
     }
 
 

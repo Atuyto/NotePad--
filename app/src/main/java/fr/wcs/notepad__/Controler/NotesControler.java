@@ -1,6 +1,8 @@
 package fr.wcs.notepad__.Controler;
 
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -87,11 +89,10 @@ public class NotesControler extends Observable implements View.OnClickListener {
             this.executor.execute(()-> {
                 List<Notes> allNotes = appDatabase.notesDao().getAllNotes();
                 int nb = appDatabase.notesDao().getNbNote();
-                this.context.runOnUiThread(()-> {
+                this.context.runOnUiThread(() ->{
                     this.loadNotes(allNotes);
                     this.loadNbNotes(nb);
                 });
-
             });
 
 

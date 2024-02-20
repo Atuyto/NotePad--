@@ -71,6 +71,11 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         return notes.size();
     }
 
+    public void setNotesList(List<Notes> notes) {
+        this.notes = notes;
+        this.notifyDataSetChanged();
+    }
+
     static class CardViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title, date, preview;
