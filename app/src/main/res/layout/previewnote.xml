@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_previewnote_navbar"
+        >
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="img"
+        android:id="@+id/id_previewnote_bouttonretour"
+        ></Button>
+
+    <EditText
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="Titre"
+        android:id="@+id/id_previewnote_edittitre"
+        ></EditText>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="img"
+            ></Button>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note :"
+        android:textSize="35dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/id_previewnote_affichagenote"
+        ></TextView>
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="580dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/id_previewnote_editnote"
+
+        ></EditText>
+
+
+</LinearLayout>
