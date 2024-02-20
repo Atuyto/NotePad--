@@ -61,21 +61,4 @@ public class NotesView extends AppCompatActivity   {
         this.buttun_back.setOnClickListener(this.notesControler);
     }
 
-    /*
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        this.notes.setTitle(s.toString());
-        this.executor.execute(() -> this.appDatabase.notesDao().updateNotes(this.notes));
-
-
-        // diviser le text watcher en deux pour voir qui est entrain d'être modifier
-    }
-
-     */
 }

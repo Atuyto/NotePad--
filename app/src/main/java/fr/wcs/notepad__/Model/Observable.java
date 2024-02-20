@@ -21,4 +21,8 @@ public abstract class Observable {
     public List<Notes> getNotes(){
         return observers.getNotes();
     }
+
+    public void setFavorit(boolean favorit){
+        observers.setFavorit(favorit);
+    }
 }

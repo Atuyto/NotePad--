@@ -10,4 +10,5 @@ public interface Observer{
 
     List<Notes> getNotes();
 
+    void setFavorit(boolean favorit);
 }

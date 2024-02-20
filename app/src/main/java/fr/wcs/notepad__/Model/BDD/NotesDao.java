@@ -17,6 +17,17 @@ public interface NotesDao {
     @Query("select count(*) from notes")
     int getNbNote();
 
+    @Query("Select * from notes order by lastModif")
+    List<Notes> getNotesSotedByRecentDate();
+    @Query("Select * from notes order by  lastModif desc")
+    List<Notes> getNotesSotedByLastDate();
+
+    @Query("select * from notes where title like '%' || :word || '%'")
+    List<Notes> getNoteBySearch(String word);
+
+    @Query("select * from notes where favorite = 1")
+    List<Notes> getFavoriteNotes();
+
 
     @Delete
     void deleteNotes(Notes notes);
