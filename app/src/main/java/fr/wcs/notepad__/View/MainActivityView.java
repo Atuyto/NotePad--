@@ -1,16 +1,15 @@
 package fr.wcs.notepad__.View;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RotateDrawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -30,6 +29,7 @@ import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.Model.Observer;
 import fr.wcs.notepad__.R;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,7 +40,9 @@ public class MainActivityView extends AppCompatActivity implements Observer {
 
     private TextView number_pages;
 
-    private Button button_sort_by_date;
+    private FrameLayout button_sort_by_date;
+
+    private ImageView arrow_date;
 
     private ImageButton burger_menu_button, favorite_button, button_add_note;
 
@@ -71,6 +73,7 @@ public class MainActivityView extends AppCompatActivity implements Observer {
         this.favorite_button    = findViewById(R.id.id_main_activity_favorite_button);
         this.drawerLayout = this.findViewById(R.id.drawer2);
         this.executorService = Executors.newSingleThreadExecutor();
+        this.arrow_date = findViewById(R.id.id_main_activity_add_date_arrow);
         this.appDatabase = AppDatabase.getInstance(this.getApplicationContext());
         this.mainActivityControl = new MainActivityControl(new DrawerManager(this.drawerLayout));
 
@@ -109,6 +112,17 @@ public class MainActivityView extends AppCompatActivity implements Observer {
             this.favorite_button.setColorFilter(Color.rgb(255, 220, 36));
         }else {
             this.favorite_button.setColorFilter(Color.rgb(217, 217, 217));
+        }
+
+    }
+
+    @Override
+    public void sotedByDate(boolean isSorted) {
+        if(isSorted){
+            this.arrow_date.setRotation(180F);
+        }
+        else {
+            this.arrow_date.setRotation(0F);
         }
 
     }

@@ -25,4 +25,8 @@ public abstract class Observable {
     public void setFavorit(boolean favorit){
         observers.setFavorit(favorit);
     }
+
+    public void sortedByDate(boolean isSorted){
+        observers.sotedByDate(isSorted);
+    }
 }

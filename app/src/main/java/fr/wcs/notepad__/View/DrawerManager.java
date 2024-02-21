@@ -21,6 +21,7 @@ public class DrawerManager {
 
         // set les listener ici
         this.drawerLayout.findViewById(R.id.id_menu_back).setOnClickListener(this.drawerControler);
+        this.drawerLayout.findViewById(R.id.nav_item_trash).setOnClickListener(this.drawerControler);
     }
 
     public void closeDrawer(){

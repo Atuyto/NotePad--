@@ -11,4 +11,6 @@ public interface Observer{
     List<Notes> getNotes();
 
     void setFavorit(boolean favorit);
+
+    void sotedByDate(boolean isSorted);
 }

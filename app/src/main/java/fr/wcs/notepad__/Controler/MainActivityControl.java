@@ -50,7 +50,6 @@ public class MainActivityControl extends Observable implements View.OnClickListe
                 else {
                     notes = AppDatabase.getInstance(v.getContext()).notesDao().getAllNotes();
                 }
-
                 new Handler(Looper.getMainLooper()).post(()->{
                     this.loadNotes(notes);
                     this.loadNbNotes(notes.size());
@@ -60,14 +59,22 @@ public class MainActivityControl extends Observable implements View.OnClickListe
 
 
         if(v.getId() == R.id.id_main_activity_date){
-            if(!DATESELECTED){
-                this.executor.execute(()-> {
-                    List<Notes> notes = AppDatabase.getInstance(v.getContext()).notesDao().getNotesSotedByRecentDate();
-                    new Handler(Looper.getMainLooper()).post(()->{
-                        this.loadNotes(notes);
-                    });
+            DATESELECTED = !DATESELECTED;
+            this.executor.execute(()-> {
+                List<Notes> notes;
+                if(DATESELECTED){
+                    notes = AppDatabase.getInstance(v.getContext()).notesDao().getNotesSotedByRecentDate();
+                }
+                else {
+                    notes = AppDatabase.getInstance(v.getContext()).notesDao().getNotesSotedByLastDate();
+                }
+
+                new Handler(Looper.getMainLooper()).post(()->{
+                    this.loadNotes(notes);
+                    this.sortedByDate(DATESELECTED);
                 });
-            }
+            });
+
         }
 
         //this.executor.execute(()->System.out.println(AppDatabase.getInstance(v.getContext()).notesDao().getNoteById(1).getTitle()));
