@@ -10,8 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" tools:layout_editor_absoluteX="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/background2"
-            android:padding="16dp"
+            android:background="@drawable/backgroun_nav_bar"
+            android:padding="5dp"
     >
         <!-- Contenu de votre barre de navigation temporaire -->
         <Button
@@ -19,13 +19,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Annuler"
+                android:gravity="center"
+                android:layout_marginStart="10dp"
         />
         <ImageButton
                 android:id="@+id/id_bottom_nav_bar_delete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_trash"
-                android:layout_gravity="end"/>
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end|center"/>
 
     </FrameLayout>
 

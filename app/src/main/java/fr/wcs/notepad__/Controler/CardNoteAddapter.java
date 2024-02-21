@@ -121,6 +121,7 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
             }
             else {
                 this.radioButton.setVisibility(View.GONE);
+                this.radioButton.setChecked(false);
                 this.cardView.setOnClickListener(cardNotesControler);
                 this.ic_stars.setOnClickListener(cardNotesControler);
                 this.cardView.setOnLongClickListener(cardNotesControler);
