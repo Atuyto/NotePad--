@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -78,4 +80,12 @@ public class NotesView extends AppCompatActivity   {
     }
 
      */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.burger_menu_note, menu);
+        return true;
+    }
+
+    public void clicksupp(MenuItem menu){
+        Log.d("TAG", "supprimé");
+    }
 }

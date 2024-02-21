@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/item1"
-        android:icon="@drawable/ic_star"
-        android:title="Mettre en favori"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/item2"
@@ -14,25 +9,6 @@
         android:title="Mettre à la corbeille"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/item3"
-        android:icon="@drawable/ic_folder"
-        android:title="Mettre dans un dossier"
-        app:showAsAction="never">
-
-        <menu>
-            <item
-                android:id="@+id/reponse1"
-                android:title="selectionner ficher"
-                />
-
-            <item
-                android:id="@+id/reponse2"
-                android:title="créer fichier" />
-
-        </menu>
-
-    </item>
 
 
 
