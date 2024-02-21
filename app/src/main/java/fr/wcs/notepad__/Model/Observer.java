@@ -13,4 +13,14 @@ public interface Observer{
     void setFavorit(boolean favorit);
 
     void sotedByDate(boolean isSorted);
+
+    void onNotesSelected();
+
+    void addNotesInSelection(Notes notes);
+
+    void notesUnSelected(Notes notes);
+
+    void close();
+
+    List<Notes> getNotesSelected();
 }

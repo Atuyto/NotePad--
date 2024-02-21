@@ -6,10 +6,7 @@ import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -27,12 +24,13 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
 
     private List<Notes> notes;
     private Context context;
-
+    private boolean isEditable;
 
 
     public CardNoteAddapter(Context context, List<Notes> notes){
         this.notes = notes;
         this.context = context;
+        this.isEditable = false;
     }
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -60,6 +58,17 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         return -1;
     }
 
+
+
+    public void setEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+        notifyDataSetChanged(); // Rafraîchir l'interface utilisateur après le changement d'éditabilité
+    }
+
+    public boolean isEditable() {
+        return isEditable;
+    }
+
     public void setFavorit(Notes n){
         n.setFavorite(!n.isFavorite());
         Executors.newSingleThreadExecutor().execute(()-> AppDatabase.getInstance(this.context).notesDao().updateNotes(n));
@@ -82,6 +91,9 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         private CardView cardView;
         private ImageView ic_stars;
         private CardNoteAddapter cardNoteAddapter;
+
+        private CheckBox radioButton;
+
         public CardViewHolder(View itemView, CardNoteAddapter cardNoteAddapter) {
             super(itemView);
             this.cardNoteAddapter = cardNoteAddapter;
@@ -90,16 +102,31 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
             this.title   = itemView.findViewById(R.id.id_card_note_title);
             this.date    = itemView.findViewById(R.id.id_card_note_date);
             this.ic_stars= itemView.findViewById(R.id.id_card_note_sart);
+            this.radioButton = itemView.findViewById(R.id.id_card_note_checkbox);
+
 
         }
+
+
 
         public void bind(Notes notes){;
             this.title.setText(notes.getTitle());
             this.date.setText(DateConverter.fromLocalDate(notes.getLastModif()));
             this.preview.setText(notes.getContainerText());
             CardNotesControler cardNotesControler = new CardNotesControler(notes,this.cardNoteAddapter );
-            this.cardView.setOnClickListener(cardNotesControler);
-            this.ic_stars.setOnClickListener(cardNotesControler);
+
+            if(this.cardNoteAddapter.isEditable){
+                this.radioButton.setVisibility(View.VISIBLE);
+                this.radioButton.setOnCheckedChangeListener(cardNotesControler);
+            }
+            else {
+                this.radioButton.setVisibility(View.GONE);
+                this.cardView.setOnClickListener(cardNotesControler);
+                this.ic_stars.setOnClickListener(cardNotesControler);
+                this.cardView.setOnLongClickListener(cardNotesControler);
+            }
+
+
             if(notes.isFavorite()){
                 this.ic_stars.setColorFilter(Color.rgb(255, 220, 36));
             }else {

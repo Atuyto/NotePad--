@@ -8,8 +8,11 @@ import java.util.List;
 @Dao
 public interface NotesDao {
 
-    @Query("select * from notes")
+    @Query("select * from notes where isDeleted = 0")
     List<Notes> getAllNotes();
+
+    @Query("select * from notes where isDeleted = 1")
+    List<Notes> getAllNotesInTrash();
 
     @Query("select * from notes where notes.idNotes = :noteId")
     Notes getNoteById(long noteId);
@@ -31,6 +34,11 @@ public interface NotesDao {
     @Query("Select * from notes where isDeleted = 1")
     List<Notes> getNotesInTrash();
 
+    @Query("update notes set isDeleted = 1 where idNotes = :id")
+    void setTarshNote(long id);
+
+    @Query("update notes set isDeleted = 0 where idNotes = :id")
+    void unSetTarshNote(long id);
 
     @Delete
     void deleteNotes(Notes notes);

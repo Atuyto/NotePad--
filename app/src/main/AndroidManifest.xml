@@ -15,7 +15,7 @@
             android:theme="@style/Theme.NotePad">
 
         <activity
-                android:name="fr.wcs.notepad__.Controler.MainActivity"
+                android:name="fr.wcs.notepad__.View.MainActivityView"
                 android:exported="true"
         >
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="fr.wcs.notepad__.View.NotesView"/>
-        <activity android:name="fr.wcs.notepad__.View.MainActivityView"/>
+        <activity android:name="fr.wcs.notepad__.View.TrashActivity"/>
     </application>
 
 </manifest>

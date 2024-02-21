@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.Model.Observable;
@@ -56,8 +57,6 @@ public class MainActivityControl extends Observable implements View.OnClickListe
                 });
             });
         }
-
-
         if(v.getId() == R.id.id_main_activity_date){
             DATESELECTED = !DATESELECTED;
             this.executor.execute(()-> {
@@ -75,6 +74,26 @@ public class MainActivityControl extends Observable implements View.OnClickListe
                 });
             });
 
+        }
+
+        if(v.getId() == R.id.id_bottom_nav_bar_cancel){
+            this.closeNavBar();
+        }
+        if(v.getId() == R.id.id_bottom_nav_bar_delete){
+            List<Notes> notes = this.getNotesSelected();
+            if(!notes.isEmpty()){
+                this.executor.execute(()->{
+                    for(Notes n : notes){
+                        AppDatabase.getInstance(v.getContext()).notesDao().setTarshNote(n.getIdNotes());
+                    }
+                    List<Notes> allnotes = AppDatabase.getInstance(v.getContext()).notesDao().getAllNotes();
+                    new Handler(Looper.getMainLooper()).post(()->{
+                        this.loadNotes(allnotes);
+                        this.loadNbNotes(allnotes.size());
+                        this.closeNavBar();
+                    });
+                });
+            }
         }
 
         //this.executor.execute(()->System.out.println(AppDatabase.getInstance(v.getContext()).notesDao().getNoteById(1).getTitle()));

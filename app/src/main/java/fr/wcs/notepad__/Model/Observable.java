@@ -29,4 +29,24 @@ public abstract class Observable {
     public void sortedByDate(boolean isSorted){
         observers.sotedByDate(isSorted);
     }
+
+    public void onNotesSelected(){
+        observers.onNotesSelected();
+    }
+
+    public void addNotesInSelection(Notes notes){
+        observers.addNotesInSelection(notes);
+    }
+
+    public void notesUnSelected(Notes notes){
+        observers.notesUnSelected(notes);
+    }
+
+    public void closeNavBar(){
+        observers.close();
+    }
+
+    public List<Notes> getNotesSelected(){
+        return observers.getNotesSelected();
+    }
 }

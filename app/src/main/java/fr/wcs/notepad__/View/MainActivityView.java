@@ -1,26 +1,18 @@
 package fr.wcs.notepad__.View;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.RotateDrawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
-import androidx.annotation.Nullable;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.view.GravityCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import com.google.android.material.navigation.NavigationView;
 import fr.wcs.notepad__.Controler.CardNoteAddapter;
-import fr.wcs.notepad__.Controler.MainActivity;
 import fr.wcs.notepad__.Controler.MainActivityControl;
 import fr.wcs.notepad__.Controler.TextSearchControler;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
@@ -29,12 +21,12 @@ import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.Model.Observer;
 import fr.wcs.notepad__.R;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MainActivityView extends AppCompatActivity implements Observer {
+public class MainActivityView extends AppCompatActivity implements Observer{
 
     private EditText search_bar;
 
@@ -44,9 +36,11 @@ public class MainActivityView extends AppCompatActivity implements Observer {
 
     private ImageView arrow_date;
 
-    private ImageButton burger_menu_button, favorite_button, button_add_note;
+    private ImageButton burger_menu_button, favorite_button, button_add_note, nav_button_trash;
 
     private DrawerLayout drawerLayout;
+
+    private Button nav_button_cancel;
 
     private AppDatabase appDatabase;
     private RecyclerView recyclerView;
@@ -54,6 +48,9 @@ public class MainActivityView extends AppCompatActivity implements Observer {
     private MainActivityControl mainActivityControl;
     private ExecutorService executorService;
     private List<Notes> notes;
+    private List<Notes> notesSelected;
+
+    private ConstraintLayout nav_bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,24 +73,32 @@ public class MainActivityView extends AppCompatActivity implements Observer {
         this.arrow_date = findViewById(R.id.id_main_activity_add_date_arrow);
         this.appDatabase = AppDatabase.getInstance(this.getApplicationContext());
         this.mainActivityControl = new MainActivityControl(new DrawerManager(this.drawerLayout));
+        this.nav_bar = findViewById(R.id.id_main_activity_nav_bar);
+        this.nav_button_cancel = findViewById(R.id.id_bottom_nav_bar_cancel);
+        this.nav_button_trash = findViewById(R.id.id_bottom_nav_bar_delete);
 
         this.init(); // Appeler la méthode d'initialisation
     }
 
     private void init(){
         Observable.setObservers(this);
+        this.notesSelected = new ArrayList<>();
         this.button_add_note.setOnClickListener(this.mainActivityControl);
         this.button_sort_by_date.setOnClickListener(this.mainActivityControl);
         this.burger_menu_button.setOnClickListener(this.mainActivityControl);
         this.button_sort_by_date.setOnClickListener(this.mainActivityControl);
         this.search_bar.addTextChangedListener(new TextSearchControler(this));
         this.favorite_button.setOnClickListener(this.mainActivityControl);
+        this.nav_button_trash.setOnClickListener(this.mainActivityControl);
+        this.nav_button_cancel.setOnClickListener(this.mainActivityControl);
+
 
         this.executorService.execute(()->{
             this.notes =  appDatabase.notesDao().getAllNotes();
             number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
             loadNotes(this.notes);
         });
+
     }
 
     @Override
@@ -141,9 +146,36 @@ public class MainActivityView extends AppCompatActivity implements Observer {
 
     }
 
+    @Override
+    public void onNotesSelected() {
+        this.cardNoteAddapter.setEditable(true);
+        this.button_add_note.setVisibility(View.GONE);
+        this.nav_bar.setVisibility(View.VISIBLE);
 
+    }
 
+    @Override
+    public void close() {
+        this.button_add_note.setVisibility(View.VISIBLE);
+        this.nav_bar.setVisibility(View.GONE);
+        this.cardNoteAddapter.setEditable(false);
+        this.notesSelected.clear();
+    }
 
+    @Override
+    public void addNotesInSelection(Notes notes) {
+        this.notesSelected.add(notes);
+    }
+
+    @Override
+    public void notesUnSelected(Notes notes) {
+        this.notesSelected.remove(notes);
+    }
+
+    @Override
+    public List<Notes> getNotesSelected() {
+        return this.notesSelected;
+    }
 
 
 }
