@@ -17,18 +17,18 @@ public interface NotesDao {
     @Query("select * from notes where notes.idNotes = :noteId")
     Notes getNoteById(long noteId);
 
-    @Query("select count(*) from notes")
+    @Query("select count(*) from notes where isDeleted = 0")
     int getNbNote();
 
-    @Query("Select * from notes order by lastModif desc")
+    @Query("Select * from notes where isDeleted = 0 order by lastModif desc ")
     List<Notes> getNotesSotedByRecentDate();
-    @Query("Select * from notes order by  lastModif ")
+    @Query("Select * from notes where isDeleted = 0 order by  lastModif ")
     List<Notes> getNotesSotedByLastDate();
 
-    @Query("select * from notes where title like '%' || :word || '%'")
+    @Query("select * from notes where  isDeleted = 0 and title like '%' || :word || '%'")
     List<Notes> getNoteBySearch(String word);
 
-    @Query("select * from notes where favorite = 1")
+    @Query("select * from notes where favorite = 1 and isDeleted = 0")
     List<Notes> getFavoriteNotes();
 
     @Query("Select * from notes where isDeleted = 1")
