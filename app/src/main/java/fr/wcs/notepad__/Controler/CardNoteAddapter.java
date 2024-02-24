@@ -23,8 +23,10 @@ import java.util.concurrent.Executors;
 public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.CardViewHolder>  {
 
     private List<Notes> notes;
-    private Context context;
+    private final Context context;
     private boolean isEditable;
+
+
 
 
     public CardNoteAddapter(Context context, List<Notes> notes){
@@ -58,7 +60,9 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
         return -1;
     }
 
-
+    public Context getContext() {
+        return context;
+    }
 
     public void setEditable(boolean isEditable) {
         this.isEditable = isEditable;
@@ -87,12 +91,14 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
 
     static class CardViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, date, preview;
-        private CardView cardView;
-        private ImageView ic_stars;
-        private CardNoteAddapter cardNoteAddapter;
+        private final TextView title;
+        private final TextView date;
+        private final TextView preview;
+        private final CardView cardView;
+        private final ImageView ic_stars;
+        private final CardNoteAddapter cardNoteAddapter;
 
-        private CheckBox radioButton;
+        private final CheckBox radioButton;
 
         public CardViewHolder(View itemView, CardNoteAddapter cardNoteAddapter) {
             super(itemView);
@@ -109,11 +115,12 @@ public class CardNoteAddapter extends RecyclerView.Adapter<CardNoteAddapter.Card
 
 
 
-        public void bind(Notes notes){;
+        public void bind(Notes notes){
             this.title.setText(notes.getTitle());
             this.date.setText(DateConverter.fromLocalDate(notes.getLastModif()));
             this.preview.setText(notes.getContainerText());
             CardNotesControler cardNotesControler = new CardNotesControler(notes,this.cardNoteAddapter );
+
 
             if(this.cardNoteAddapter.isEditable){
                 this.radioButton.setVisibility(View.VISIBLE);

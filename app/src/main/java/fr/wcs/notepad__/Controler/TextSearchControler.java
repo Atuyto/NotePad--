@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 
 public class TextSearchControler extends Observable implements TextWatcher {
 
-    private Context context;
+    private final Context context;
 
     public TextSearchControler(Context context) {
         this.context = context;

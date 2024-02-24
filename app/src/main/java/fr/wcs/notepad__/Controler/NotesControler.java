@@ -4,10 +4,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Catalogue;
 import fr.wcs.notepad__.Model.DateConverter;
@@ -22,13 +25,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class NotesControler extends Observable implements View.OnClickListener {
+public class NotesControler extends Observable implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private final AppDatabase appDatabase;
-    private int note_id, catalogue_id;
+    private final int note_id;
+    private final int catalogue_id;
 
-    private ExecutorService executor; // Permet d'excuter des thread en arrière plan
-    private AppCompatActivity context;
+    private final ExecutorService executor; // Permet d'excuter des thread en arrière plan
+    private final AppCompatActivity context;
 
     private Notes notes;
 
@@ -94,9 +98,24 @@ public class NotesControler extends Observable implements View.OnClickListener {
                     this.loadNbNotes(nb);
                 });
             });
-
-
-
+        }
+        if(v.getId() == R.id.id_note_activity_menu){
+            PopupMenu popup = new PopupMenu(v.getContext(), v);
+            popup.getMenuInflater().inflate(R.menu.notes_menu, popup.getMenu());
+            popup.setOnMenuItemClickListener(this);
+            popup.show();
         }
     }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if(item.getItemId() == R.id.trash){
+            this.executor.execute(()->{
+                this.appDatabase.notesDao().setTarshNote(this.notes.getIdNotes());
+                this.context.finish();
+            });
+        }
+        return false;
+    }
+
 }

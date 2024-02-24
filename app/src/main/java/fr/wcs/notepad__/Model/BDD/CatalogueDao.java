@@ -11,10 +11,10 @@ import java.util.List;
 public interface CatalogueDao {
 
     @Query("select * from catalogue")
-    public List<Catalogue> getAllCatalogue();
+    List<Catalogue> getAllCatalogue();
 
     @Query("select * from catalogue where catalogueId = :id")
-    public Catalogue getCatalogueFromId(long id);
+    Catalogue getCatalogueFromId(long id);
 
     @Insert
     long insertCatalogue(Catalogue catalogue);

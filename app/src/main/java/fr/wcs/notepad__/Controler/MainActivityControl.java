@@ -19,8 +19,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivityControl extends Observable implements View.OnClickListener{
-    private ExecutorService executor; // Permet d'excuter des thread en arrière plan
-    private DrawerManager drawerManager;
+    private final ExecutorService executor; // Permet d'excuter des thread en arrière plan
+    private final DrawerManager drawerManager;
     private boolean DATESELECTED, FAVORITESELECTED;
 
     public MainActivityControl(DrawerManager drawerManager){

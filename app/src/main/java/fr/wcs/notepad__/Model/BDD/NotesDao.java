@@ -1,5 +1,6 @@
 package fr.wcs.notepad__.Model.BDD;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.*;
 import fr.wcs.notepad__.Model.Notes;
 
@@ -39,6 +40,9 @@ public interface NotesDao {
 
     @Query("update notes set isDeleted = 0 where idNotes = :id")
     void unSetTarshNote(long id);
+
+    @Query("SELECT * FROM notes WHERE isDeleted = 1")
+    LiveData<List<Notes>> getNotesLiveData();
 
     @Delete
     void deleteNotes(Notes notes);

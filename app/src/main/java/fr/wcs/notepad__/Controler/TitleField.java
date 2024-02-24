@@ -11,10 +11,10 @@ import java.util.concurrent.Executors;
 
 public class TitleField implements TextWatcher {
 
-    private Context context;
-    private ExecutorService executorService;
-    private Notes notes;
-    private AppDatabase appDatabase;
+    private final Context context;
+    private final ExecutorService executorService;
+    private final Notes notes;
+    private final AppDatabase appDatabase;
     public TitleField(Context context, Notes notes, AppDatabase appDatabase){
         this.context = context;
         this.notes = notes;

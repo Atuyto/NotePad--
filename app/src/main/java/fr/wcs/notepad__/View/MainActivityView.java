@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 import fr.wcs.notepad__.Controler.CardNoteAddapter;
 import fr.wcs.notepad__.Controler.MainActivityControl;
 import fr.wcs.notepad__.Controler.TextSearchControler;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivityView extends AppCompatActivity implements Observer{
 
@@ -77,7 +79,7 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.nav_button_cancel = findViewById(R.id.id_bottom_nav_bar_cancel);
         this.nav_button_trash = findViewById(R.id.id_bottom_nav_bar_delete);
 
-        this.init(); // Appeler la méthode d'initialisation
+        this.init();
     }
 
     private void init(){
@@ -93,13 +95,8 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.nav_button_cancel.setOnClickListener(this.mainActivityControl);
 
 
-        this.executorService.execute(()->{
-            this.notes =  appDatabase.notesDao().getAllNotes();
-            number_pages.setText(String.valueOf(appDatabase.notesDao().getNbNote()).concat(" notes"));
-            loadNotes(this.notes);
-        });
-
     }
+
 
     @Override
     public void loadNbNotes(int nb) {
@@ -160,6 +157,19 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.nav_bar.setVisibility(View.GONE);
         this.cardNoteAddapter.setEditable(false);
         this.notesSelected.clear();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.executorService.execute(()->{
+            this.notes =  appDatabase.notesDao().getAllNotes();
+            runOnUiThread(()->{
+                number_pages.setText(this.notes.size() >1 ? String.valueOf(this.notes.size()).concat(" notes") :
+                        String.valueOf(this.notes.size()).concat(" note"));
+                loadNotes(this.notes);
+            });
+        });
     }
 
     @Override

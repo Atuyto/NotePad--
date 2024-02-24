@@ -27,11 +27,13 @@ public class NotesView extends AppCompatActivity   {
 
     private EditText notes_text, title;
 
-    private ImageButton buttun_back;
+    private ImageButton buttun_back, menu_button;
 
     private int note_id;
 
     private int catalogue_id;
+
+
 
 
 
@@ -40,6 +42,8 @@ public class NotesView extends AppCompatActivity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notes_activity);
+
+        this.menu_button = findViewById(R.id.id_note_activity_menu);
         this.init();
     }
 
@@ -59,6 +63,7 @@ public class NotesView extends AppCompatActivity   {
         this.buttun_back    = findViewById(R.id.id_note_activity_back);
         this.notesControler = new NotesControler(this.note_id, this.catalogue_id, this, this.title, this.notes_text);
         this.buttun_back.setOnClickListener(this.notesControler);
+        this.menu_button.setOnClickListener(this.notesControler);
     }
 
 }

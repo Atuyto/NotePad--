@@ -10,7 +10,7 @@ import fr.wcs.notepad__.R;
 public class DrawerManager {
 
     private final DrawerLayout drawerLayout;
-    private DrawerControler drawerControler;
+    private final DrawerControler drawerControler;
     public DrawerManager(DrawerLayout drawer) {
         this.drawerLayout = drawer;
         this.drawerControler = new DrawerControler(this);

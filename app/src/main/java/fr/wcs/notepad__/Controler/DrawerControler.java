@@ -8,7 +8,7 @@ import fr.wcs.notepad__.View.TrashActivity;
 
 public class DrawerControler implements View.OnClickListener {
 
-    private DrawerManager drawerManager;
+    private final DrawerManager drawerManager;
     public DrawerControler(DrawerManager drawerManager) {
         this.drawerManager = drawerManager;
     }
