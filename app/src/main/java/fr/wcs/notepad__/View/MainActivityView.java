@@ -3,6 +3,7 @@ package fr.wcs.notepad__.View;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,8 @@ public class MainActivityView extends AppCompatActivity implements Observer{
 
     private Button nav_button_cancel;
 
+    private ScrollView scrollView;
+
     private AppDatabase appDatabase;
     private RecyclerView recyclerView;
     private CardNoteAddapter cardNoteAddapter;
@@ -78,6 +81,7 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.nav_bar = findViewById(R.id.id_main_activity_nav_bar);
         this.nav_button_cancel = findViewById(R.id.id_bottom_nav_bar_cancel);
         this.nav_button_trash = findViewById(R.id.id_bottom_nav_bar_delete);
+        this.scrollView = findViewById(R.id.id_main_activity_add_scroll_view);
 
         this.init();
     }
@@ -145,6 +149,9 @@ public class MainActivityView extends AppCompatActivity implements Observer{
 
     @Override
     public void onNotesSelected() {
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) this.scrollView.getLayoutParams();
+        params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, 100);
+        this.scrollView.setLayoutParams(params);
         this.cardNoteAddapter.setEditable(true);
         this.button_add_note.setVisibility(View.GONE);
         this.nav_bar.setVisibility(View.VISIBLE);
@@ -153,6 +160,9 @@ public class MainActivityView extends AppCompatActivity implements Observer{
 
     @Override
     public void close() {
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) this.scrollView.getLayoutParams();
+        params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, 0);
+        this.scrollView.setLayoutParams(params);
         this.button_add_note.setVisibility(View.VISIBLE);
         this.nav_bar.setVisibility(View.GONE);
         this.cardNoteAddapter.setEditable(false);

@@ -33,7 +33,6 @@ public class MainActivityControl extends Observable implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.id_main_activity_add_notes){
-            System.out.println("test");
             Intent intent = new Intent(v.getContext(),NotesView.class);
             v.getContext().startActivity(intent);
         }

@@ -77,8 +77,6 @@ Q.idea/sonarlint/securityhotspotstore/0/9/0905267240b7a10399deffd8b47e3567e3ebc6
 Q.idea/sonarlint/securityhotspotstore/9/d/9d04c584248c1c72154817c65617b9072479afe9,a\e\aed43a8fc43db91c1fe6b5d9a64ac77dc91c6576
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-n
->app/src/main/java/fr/wcs/notepad__/Controler/MainActivity.java,1\c\1c8b5728d9048d79e6dbae607592a5730579743c
 m
 =app/src/main/java/fr/wcs/notepad__/View/MainActivityView.java,d\9\d9110a9efcaf511efde83e063ac5b71ad225f904
 X
@@ -103,11 +101,9 @@ h
 8app/src/main/java/fr/wcs/notepad__/Model/Observable.java,2\c\2c5130067b3b3297c7fffa3dcaad795b959665d8
 f
 6app/src/main/java/fr/wcs/notepad__/Model/Observer.java,b\9\b9ece2ce62fe19944869a7ee793598cc9cc60682
-r
-Bapp/src/main/java/fr/wcs/notepad__/View/Fragment/MainFragment.java,7\0\707592420339995ed4e95ce73c73f2b1d352e04f
-d
-4app/src/main/java/fr/wcs/notepad__/MainFragment.java,b\e\be7330a517f05577669dc4a72fa8e031039087be
-t
-Dapp/src/main/java/fr/wcs/notepad__/Model/Fragment/MiainFragment.java,a\f\af4124e7fa89c0c497a3e059e4731dd9cece4d85
-s
-Capp/src/main/java/fr/wcs/notepad__/Model/Fragment/MainFragment.java,3\0\3098ef6a1c4b483c95a9a71706ce076522f709f5
+j
+:app/src/main/java/fr/wcs/notepad__/View/DrawerManager.java,9\0\9062d7b52398fb4a15f21911216fbccd3debf481
+q
+Aapp/src/main/java/fr/wcs/notepad__/Controler/DrawerControler.java,7\1\71c2d92eadaece567c825204706f56b8ab2ae3fc
+u
+Eapp/src/main/java/fr/wcs/notepad__/Controler/TextSearchControler.java,d\7\d7d5b2ed238c15d4cabe71f0b650bdb11139a4ad
