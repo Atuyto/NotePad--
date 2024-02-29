@@ -1,5 +1,6 @@
 package fr.wcs.notepad__.View;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -101,6 +102,10 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.favorite_button.setOnClickListener(this.mainActivityControl);
         this.nav_button_trash.setOnClickListener(this.mainActivityControl);
         this.nav_button_cancel.setOnClickListener(this.mainActivityControl);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 123);
+        }
 
 
 
