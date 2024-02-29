@@ -107,3 +107,9 @@ q
 Aapp/src/main/java/fr/wcs/notepad__/Controler/DrawerControler.java,7\1\71c2d92eadaece567c825204706f56b8ab2ae3fc
 u
 Eapp/src/main/java/fr/wcs/notepad__/Controler/TextSearchControler.java,d\7\d7d5b2ed238c15d4cabe71f0b650bdb11139a4ad
+g
+7app/src/main/java/fr/wcs/notepad__/Model/AudioNote.java,5\c\5c1ecdfe49f87a17f2f7a465062d634a1f107c87
+k
+;app/src/main/java/fr/wcs/notepad__/View/AudioNotePopUp.java,1\2\12ebdc4fe30813e169c3e7a6ed646ed3b50d3555
+s
+Capp/src/main/java/fr/wcs/notepad__/Controler/AudioNoteControle.java,1\a\1af77be11772cce926c23eca6d19337e29e13938

@@ -1,5 +1,6 @@
 package fr.wcs.notepad__.View;
 
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -17,6 +20,7 @@ import androidx.work.WorkManager;
 import fr.wcs.notepad__.Controler.CardNoteAddapter;
 import fr.wcs.notepad__.Controler.MainActivityControl;
 import fr.wcs.notepad__.Controler.TextSearchControler;
+import fr.wcs.notepad__.Manifest;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.Model.Observable;
@@ -62,6 +66,7 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.main_activity);
         this.number_pages = this.findViewById(R.id.id_main_activity_notes);
         this.recyclerView = this.findViewById(R.id.id_main_activity_recyclerView);
@@ -97,6 +102,7 @@ public class MainActivityView extends AppCompatActivity implements Observer{
         this.favorite_button.setOnClickListener(this.mainActivityControl);
         this.nav_button_trash.setOnClickListener(this.mainActivityControl);
         this.nav_button_cancel.setOnClickListener(this.mainActivityControl);
+
 
 
     }
