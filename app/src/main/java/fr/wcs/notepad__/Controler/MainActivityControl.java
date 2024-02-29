@@ -40,7 +40,7 @@ public class MainActivityControl extends Observable implements View.OnClickListe
         if(v.getId() == R.id.id_main_activity_add_notes){
             this.context = v.getContext();
             PopupMenu popup = new PopupMenu(v.getContext(), v);
-            popup.getMenuInflater().inflate(R.menu.notes_menu, popup.getMenu());
+            popup.getMenuInflater().inflate(R.menu.choose_note_type, popup.getMenu());
             popup.setOnMenuItemClickListener(this);
             popup.show();
         }

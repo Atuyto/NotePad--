@@ -20,7 +20,6 @@ import androidx.work.WorkManager;
 import fr.wcs.notepad__.Controler.CardNoteAddapter;
 import fr.wcs.notepad__.Controler.MainActivityControl;
 import fr.wcs.notepad__.Controler.TextSearchControler;
-import fr.wcs.notepad__.Manifest;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.Model.Observable;
