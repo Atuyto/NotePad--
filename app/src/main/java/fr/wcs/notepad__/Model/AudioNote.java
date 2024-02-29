@@ -38,71 +38,66 @@ public class AudioNote {
 
     public AudioNote(){}
 
-    public AudioNote(String title, String path) {
+    public AudioNote(String title, String path, Long catalogueId) {
         this.title = title;
         this.path = path;
+        this.catalogueId = catalogueId;
     }
 
     public Long getId() {
         return id;
     }
 
-    public AudioNote setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public AudioNote setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
     public String getPath() {
         return path;
     }
 
-    public AudioNote setPath(String path) {
+    public void setPath(String path) {
         this.path = path;
-        return this;
     }
 
     public long getCatalogueId() {
         return catalogueId;
     }
 
-    public AudioNote setCatalogueId(long catalogueId) {
+    public void setCatalogueId(long catalogueId) {
         this.catalogueId = catalogueId;
-        return this;
     }
 
     public boolean isFavorite() {
         return favorite;
     }
 
-    public AudioNote setFavorite(boolean favorite) {
+    public void setFavorite(boolean favorite) {
         this.favorite = favorite;
-        return this;
     }
 
     public LocalDate getLastModif() {
         return lastModif;
     }
 
-    public AudioNote setLastModif(LocalDate lastModif) {
+    public void setLastModif(LocalDate lastModif) {
         this.lastModif = lastModif;
-        return this;
     }
 
     public boolean isDeleted() {
         return isDeleted;
     }
 
-    public AudioNote setDeleted(boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
-        return this;
     }
+
 }

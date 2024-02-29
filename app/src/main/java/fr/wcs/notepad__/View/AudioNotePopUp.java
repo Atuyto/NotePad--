@@ -18,7 +18,7 @@ public class AudioNotePopUp extends Dialog {
         this.title = findViewById(R.id.id_audio_note_title);
         this.play_button = findViewById(R.id.id_audio_note_play_pause);
 
-        this.play_button.setOnClickListener(new AudioNoteControle());
+        this.play_button.setOnClickListener(new AudioNoteControle(this.title.toString()));
     }
 
 

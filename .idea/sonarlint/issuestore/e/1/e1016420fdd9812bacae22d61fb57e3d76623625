@@ -1,6 +1,6 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÁÈìÉøÿÿÿÿ8¶É‘Ú1
 p
-java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û½ïÕ8ÈğÈÌŞ1
+java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û½ïÕ8ÈğÈÌŞ1
 »
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ŒÚ‹Òüÿÿÿÿ8ÎğÈÌŞ1
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ŒÚ‹Òüÿÿÿÿ8ÎğÈÌŞ1

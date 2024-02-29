@@ -113,3 +113,5 @@ k
 ;app/src/main/java/fr/wcs/notepad__/View/AudioNotePopUp.java,1\2\12ebdc4fe30813e169c3e7a6ed646ed3b50d3555
 s
 Capp/src/main/java/fr/wcs/notepad__/Controler/AudioNoteControle.java,1\a\1af77be11772cce926c23eca6d19337e29e13938
+o
+?app/src/main/java/fr/wcs/notepad__/Model/BDD/AudioNotesDao.java,3\6\36f4f5aa3bca3681172877f1a6009aa96ec7412f
