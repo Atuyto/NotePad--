@@ -1,9 +1,11 @@
 package fr.wcs.notepad__.Controler;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import androidx.annotation.RequiresApi;
@@ -12,6 +14,7 @@ import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.Model.Observable;
 import fr.wcs.notepad__.R;
+import fr.wcs.notepad__.View.AudioNotePopUp;
 import fr.wcs.notepad__.View.DrawerManager;
 import fr.wcs.notepad__.View.NotesView;
 
@@ -19,10 +22,11 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MainActivityControl extends Observable implements View.OnClickListener{
+public class MainActivityControl extends Observable implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     private final ExecutorService executor; // Permet d'excuter des thread en arrière plan
     private final DrawerManager drawerManager;
     private boolean DATESELECTED, FAVORITESELECTED;
+    private Context context;
 
     public MainActivityControl(DrawerManager drawerManager){
         this.executor         = Executors.newSingleThreadExecutor();
@@ -34,8 +38,11 @@ public class MainActivityControl extends Observable implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.id_main_activity_add_notes){
-            Intent intent = new Intent(v.getContext(),NotesView.class);
-            v.getContext().startActivity(intent);
+            this.context = v.getContext();
+            PopupMenu popup = new PopupMenu(v.getContext(), v);
+            popup.getMenuInflater().inflate(R.menu.notes_menu, popup.getMenu());
+            popup.setOnMenuItemClickListener(this);
+            popup.show();
         }
         if(v.getId() == R.id.id_main_activity_burger_button){
             this.drawerManager.openDrawer();
@@ -97,5 +104,17 @@ public class MainActivityControl extends Observable implements View.OnClickListe
         }
 
         //this.executor.execute(()->System.out.println(AppDatabase.getInstance(v.getContext()).notesDao().getNoteById(1).getTitle()));
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.note_ecrite){
+            Intent intent = new Intent(context,NotesView.class);
+            context.startActivity(intent);
+        }
+        if(menuItem.getItemId() == R.id.note_audio){
+            new AudioNotePopUp(this.context).show();
+        }
+        return false;
     }
 }
