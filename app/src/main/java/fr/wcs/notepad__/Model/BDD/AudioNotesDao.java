@@ -12,7 +12,7 @@ import java.util.List;
 public interface AudioNotesDao {
 
     @Insert
-    public void insert(AudioNote audioNote);
+    public Long insert(AudioNote audioNote);
 
     @Query("select * from audionote where isDeleted = 0")
     List<AudioNote> getAllNotes();

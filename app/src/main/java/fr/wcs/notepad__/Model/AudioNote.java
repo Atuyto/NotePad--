@@ -1,8 +1,10 @@
 package fr.wcs.notepad__.Model;
 
+import android.annotation.SuppressLint;
 import androidx.room.*;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 @Entity(foreignKeys = {
         @ForeignKey(
@@ -13,7 +15,7 @@ import java.time.LocalDate;
         )
 })
 @TypeConverters(DateConverter.class)
-public class AudioNote {
+public class AudioNote extends Notes {
 
     @PrimaryKey(autoGenerate = true)
     private Long id;
@@ -38,10 +40,16 @@ public class AudioNote {
 
     public AudioNote(){}
 
-    public AudioNote(String title, String path, Long catalogueId) {
+    @SuppressLint("NewApi")
+    public AudioNote(String title) {
+        this.lastModif = LocalDate.now();
         this.title = title;
-        this.path = path;
-        this.catalogueId = catalogueId;
+    }
+
+    public String createPath(){
+        Random random = new Random();
+        return String.valueOf(random.nextInt(10000))
+                .concat(DateConverter.fromLocalDate(this.lastModif)).concat("_").concat(this.title).concat(".3gp");
     }
 
     public Long getId() {

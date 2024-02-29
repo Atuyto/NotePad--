@@ -14,7 +14,7 @@ import fr.wcs.notepad__.Model.Notes;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Notes.class, Catalogue.class, AudioNote.class}, version = 3, exportSchema = true)
+@Database(entities = {Notes.class, Catalogue.class, AudioNote.class}, version = 4, exportSchema = true)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

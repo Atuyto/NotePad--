@@ -21,6 +21,7 @@ import androidx.work.WorkManager;
 import fr.wcs.notepad__.Controler.CardNoteAddapter;
 import fr.wcs.notepad__.Controler.MainActivityControl;
 import fr.wcs.notepad__.Controler.TextSearchControler;
+import fr.wcs.notepad__.Model.AudioNote;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.Model.Observable;
@@ -60,6 +61,7 @@ public class MainActivityView extends AppCompatActivity implements Observer{
     private List<Notes> notesSelected;
 
     private ConstraintLayout nav_bar;
+    private List<AudioNote> audioNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,6 +207,19 @@ public class MainActivityView extends AppCompatActivity implements Observer{
     @Override
     public List<Notes> getNotesSelected() {
         return this.notesSelected;
+    }
+
+
+    public void loadAudioNote(List<AudioNote> audioNotes) {
+        this.audioNotes = audioNotes;
+        if (this.cardNoteAddapter == null) {
+            this.cardNoteAddapter = new CardNoteAddapter(this.getApplicationContext(), notes);
+            this.recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+            this.recyclerView.setHasFixedSize(false);
+            this.recyclerView.setAdapter(this.cardNoteAddapter);
+        } else {
+            this.cardNoteAddapter.setNotesList(notes);
+        }
     }
 
 

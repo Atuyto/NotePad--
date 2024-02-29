@@ -2,20 +2,16 @@ package fr.wcs.notepad__.Controler;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import fr.wcs.notepad__.Model.BDD.AppDatabase;
 import fr.wcs.notepad__.Model.DateConverter;
 import fr.wcs.notepad__.Model.Notes;
 import fr.wcs.notepad__.R;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.Executors;
