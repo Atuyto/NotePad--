@@ -1,5 +1,5 @@
 # Bienvenue sur Notepad--
-<img width="250" alt="Plan de travail 1@2x" src="https://github.com/Atuyto/NotePad--/assets/129874028/d69b39de-8dde-4f6d-af5c-81edfdd37b89">
+<img width="250" alt="Plan de travail 1@2x" src="https://github.com/Atuyto/NotePad--/assets/129874028/e231637b-f0c1-4814-8e56-75a9e6b3e49d">
 
 <a href="https://antoine-carrere.fr/">Graphiste Carrere Antoine</a>
 
