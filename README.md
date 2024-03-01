@@ -17,14 +17,6 @@ L’application proposera plusieur fonctionnalité :
   - Possibilité de changer le délai avant de supprimer ce qui se trouve dans la corbeille
   - Possibilité de supprimer manuellement les éléments dans la corbeille
 
-# Comment l'installer
-<a href="https://cdn.discordapp.com/attachments/1206893850808025119/1212790124253945856/notePad--.apk?ex=65f31dd2&is=65e0a8d2&hm=312b1335e310ba8bab3c00de7b6070549c55a1579bee5a287e1bdf98698cf404&">Télécharger l'APK</a>
-
-# Lien utile
-<a href="https://www.figma.com/file/tdqq2sB98baXj3WO1trH9t/Micro-Appli?type=design&node-id=0%3A1&mode=design&t=4FlDUfLSdUyeo7iu-1">Maquettage</a>
-
-<a href="https://docs.google.com/document/d/1aMViuE0FMze90W_auUiCQfoXECzTNZkpfws0H6oAIGI/edit?usp=sh">Rapport du projet</a>
-
 # Language et logiciel utilisé
 ### Language :
   - Java
@@ -34,6 +26,17 @@ L’application proposera plusieur fonctionnalité :
   - Figma
   - GitHub
   - Star UML
+
+# Comment l'installer
+Vous avez juste à télécharger, lancer l'APK sur votre Android et cliquer sur Installer.
+<a href="https://cdn.discordapp.com/attachments/1206893850808025119/1212790124253945856/notePad--.apk?ex=65f31dd2&is=65e0a8d2&hm=312b1335e310ba8bab3c00de7b6070549c55a1579bee5a287e1bdf98698cf404&">Télécharger l'APK</a>
+
+# Liens utiles
+<a href="https://www.figma.com/file/tdqq2sB98baXj3WO1trH9t/Micro-Appli?type=design&node-id=0%3A1&mode=design&t=4FlDUfLSdUyeo7iu-1">Maquettage</a>
+
+<a href="https://docs.google.com/document/d/1aMViuE0FMze90W_auUiCQfoXECzTNZkpfws0H6oAIGI/edit?usp=sh">Rapport du projet</a>
+
+
 
 
 
