@@ -6,8 +6,8 @@
 ## Qu'es que Notepad--
 NotePad– - est une application qui permet la gestion de notes. L’application propose une interface simple, comportant toutes nos notes enregistrées, nous pouvons les supprimer ainsi que les modifier. Il serait possible de les ranger dans des dossiers. Nous pourrions également les trier avec différentes fonctions.
 
-## Les fonctionnalité
-L’application proposera plusieur fonctionnalité : 
+## Les fonctionnalités
+L’application proposera plusieur fonctionnalités : 
   - Visualisation de toutes ses notes
   - Visualisation des notes triées par date de dernière modification, favoris, ou bien par titre
   - Possibilité de supprimer les notes
